@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- BASE:START (managed by Coding Agent — do not edit) -->
+<base href="/heatmap-test-page/">
+<!-- BASE:END -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+
+<!-- SEO Meta Tags -->
+<title>PayMeGPT — Heatmap Test Page</title>
+<meta property="og:title" content="PayMeGPT — Heatmap Test Page" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="PayMeGPT — Heatmap Test Page" />
+<!-- End SEO Meta Tags -->
+<meta name="sheet-data-url" content="https://paymegpt.com/api/public/landing-pages/3974/sheet-data">
+<meta name="sheet-rows-url" content="https://paymegpt.com/api/public/landing-pages/3974/sheet-rows">
+<meta name="sheet-writes-enabled" content="true">
+<meta name="sheet-allow-create" content="true">
+<meta name="sheet-allow-delete" content="false">
+
+
+<style data-gate>body{visibility:hidden;}</style>
+<script data-gate>
+(function(){
+  var slug='NSeAUqvQCM';
+  var apiBase='https://paymegpt.com';
+  var PW_TOKEN_KEY='lp_pw_'+slug;
+  var pwPassed=false;
+  var storedToken=localStorage.getItem(PW_TOKEN_KEY);
+  if(storedToken){
+    try{
+      var decoded=atob(storedToken);
+      var parts=decoded.split(':');
+      if(parts.length>=2){
+        var ts=parseInt(parts[1]);
+        if(Date.now()-ts<24*60*60*1000){pwPassed=true;}
+      }
+    }catch(e){}
+  }
+  if(pwPassed){document.addEventListener('DOMContentLoaded',function(){document.body.style.visibility='visible';});return;}
+  document.addEventListener('DOMContentLoaded',function(){
+    var gateHtml='<div id="password-gate" style="position:fixed;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,#f5f7fa 0%,#c3cfe2 100%);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;padding:16px;">'+
+      '<div style="background:white;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.15);width:100%;max-width:420px;padding:32px;text-align:center;">'+
+      '<div style="width:64px;height:64px;border-radius:50%;background:#2563eb20;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg></div>'+
+      '<h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Enter Password</h2>'+
+      '<p style="margin:0 0 24px;color:#6b7280;font-size:16px;">This page is password protected.</p>'+
+      '<form id="pw-form">'+
+      '<input type="password" id="pw-input" placeholder="Enter password" required style="width:100%;box-sizing:border-box;height:48px;padding:0 16px;font-size:16px;border:1px solid #d1d5db;border-radius:8px;outline:none;margin-bottom:12px;" />'+
+      '<div id="pw-error" style="display:none;color:#ef4444;font-size:14px;margin-bottom:12px;"></div>'+
+      '<div id="pw-success" style="display:none;color:#22c55e;font-size:14px;margin-bottom:12px;"></div>'+
+      '<button type="submit" id="pw-btn" style="width:100%;height:48px;font-size:16px;font-weight:600;color:white;border:none;border-radius:8px;cursor:pointer;background:#2563eb;">Submit</button>'+
+      '</form></div></div>';
+    document.body.insertAdjacentHTML('beforeend',gateHtml);
+    document.body.style.visibility='visible';
+    var pwForm=document.getElementById('pw-form');
+    var pwInput=document.getElementById('pw-input');
+    var pwBtn=document.getElementById('pw-btn');
+    var pwError=document.getElementById('pw-error');
+    var pwSuccess=document.getElementById('pw-success');
+    pwForm.addEventListener('submit',function(e){
+      e.preventDefault();
+      var pw=pwInput.value;if(!pw)return;
+      pwBtn.disabled=true;pwBtn.textContent='Verifying...';pwError.style.display='none';pwSuccess.style.display='none';
+      fetch(apiBase+'/api/landing-pages/public/'+slug+'/verify-password',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:pw})})
+      .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
+      .then(function(res){
+        if(res.data.success&&res.data.accessToken){
+          localStorage.setItem(PW_TOKEN_KEY,res.data.accessToken);
+          try{sessionStorage.setItem('lp_access_'+slug,res.data.accessToken);}catch(e){}
+          pwSuccess.textContent='Access granted!';pwSuccess.style.display='block';
+          setTimeout(function(){document.getElementById('password-gate').remove();},600);
+        }else{
+          pwError.textContent=res.data.error||'Incorrect password. Please try again.';pwError.style.display='block';
+          pwInput.value='';pwInput.focus();
+        }
+      })
+      .catch(function(){pwError.textContent='Incorrect password. Please try again.';pwError.style.display='block';})
+      .finally(function(){pwBtn.disabled=false;pwBtn.textContent='Submit';});
+    });
+    pwInput.focus();
+  });
+})();
+</script>
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=3974');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='NSeAUqvQCM';
+  var apiBase='https://paymegpt.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav data-section="nav">
+  <div class="nav-logo" data-track="Nav Logo">PayMeGPT</div>
+  <div class="nav-links">
+    <a data-track="Nav Features">Features</a>
+    <a data-track="Nav Pricing">Pricing</a>
+    <a data-track="Nav Docs">Docs</a>
+    <a data-track="Nav Blog">Blog</a>
+  </div>
+  <button class="nav-cta" data-track="Nav Get Started">Get Started Free</button>
+</nav>
+
+<section class="hero" data-section="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge" data-track="Hero Badge"><span></span> Now with AI Agents</div>
+  <h1>Automate Everything.<br><em>Grow Faster.</em></h1>
+  <p class="hero-sub">The all-in-one platform for AI-powered chatbots, automations, and customer engagement. Replace 5 tools with one.</p>
+  <div class="hero-btns">
+    <button class="btn-primary" data-track="Hero Start Free">Start for Free</button>
+    <button class="btn-secondary" data-track="Hero Watch Demo">Watch Demo &rarr;</button>
+  </div>
+  <div class="hero-stats">
+    <div class="stat" data-track="Stat Active Users"><div class="stat-num">12K+</div><div class="stat-label">Active Users</div></div>
+    <div class="stat" data-track="Stat Messages"><div class="stat-num">84M</div><div class="stat-label">Messages Sent</div></div>
+    <div class="stat" data-track="Stat Uptime"><div class="stat-num">99.9%</div><div class="stat-label">Uptime</div></div>
+    <div class="stat" data-track="Stat Integrations"><div class="stat-num">60+</div><div class="stat-label">Integrations</div></div>
+  </div>
+</section>
+
+<section class="features" data-section="features">
+  <div class="section-label">What You Get</div>
+  <div class="section-title">Everything in one place.</div>
+  <p class="section-sub">Build, automate, and grow without duct-taping 10 different tools together.</p>
+  <div class="features-grid">
+    <div class="feature-card" data-track="Feature AI Chatbots"><div class="feature-icon">🤖</div><div class="feature-title">AI Chatbots</div><p class="feature-desc">Deploy intelligent chatbots on any channel in minutes. No code required.</p></div>
+    <div class="feature-card" data-track="Feature Flow Builder"><div class="feature-icon">⚡</div><div class="feature-title">Flow Builder</div><p class="feature-desc">Visual drag-and-drop automation builder with 60+ integrations.</p></div>
+    <div class="feature-card" data-track="Feature Landing Pages"><div class="feature-icon">🚀</div><div class="feature-title">Landing Pages</div><p class="feature-desc">AI-generated pages connected to your data. Live in seconds.</p></div>
+    <div class="feature-card" data-track="Feature Google Sheets"><div class="feature-icon">📊</div><div class="feature-title">Google Sheets Backend</div><p class="feature-desc">Use Sheets as your database. Read, write, and sync in real time.</p></div>
+    <div class="feature-card" data-track="Feature Social Media"><div class="feature-icon">📱</div><div class="feature-title">Social Media</div><p class="feature-desc">Schedule and publish to Facebook, Instagram, and X from one place.</p></div>
+    <div class="feature-card" data-track="Feature AI Media"><div class="feature-icon">🎬</div><div class="feature-title">AI Media Generation</div><p class="feature-desc">Images, videos, music, and speech — generated and posted automatically.</p></div>
+  </div>
+</section>
+
+<section class="pricing" data-section="pricing">
+  <div class="pricing-inner">
+    <div class="section-label">Pricing</div>
+    <div class="section-title">Simple, no-BS pricing.</div>
+    <p class="section-sub">Start free. Scale when you're ready. No surprise fees.</p>
+    <div class="pricing-grid">
+      <div class="price-card" data-track="Pricing Starter Card">
+        <div class="price-tier">Starter</div>
+        <div class="price-amount">$0<span>/mo</span></div>
+        <p class="price-desc">Perfect for testing ideas and building your first bot.</p>
+        <ul class="price-features"><li>1 Widget</li><li>500 messages/mo</li><li>Basic flows</li><li>Community support</li></ul>
+        <button class="btn-plan btn-plan-outline" data-track="Pricing Starter CTA">Get Started Free</button>
+      </div>
+      <div class="price-card featured" data-track="Pricing Pro Card">
+        <div class="price-tier">Pro</div>
+        <div class="price-amount">$49<span>/mo</span></div>
+        <p class="price-desc">For serious builders who want the full platform.</p>
+        <ul class="price-features"><li>Unlimited Widgets</li><li>50K messages/mo</li><li>AI media generation</li><li>Priority support</li></ul>
+        <button class="btn-plan btn-plan-fill" data-track="Pricing Pro CTA">Start Pro Trial</button>
+      </div>
+      <div class="price-card" data-track="Pricing Agency Card">
+        <div class="price-tier">Agency</div>
+        <div class="price-amount">$149<span>/mo</span></div>
+        <p class="price-desc">White-label everything. Resell to your clients.</p>
+        <ul class="price-features"><li>White-label portal</li><li>Unlimited clients</li><li>Custom domain</li><li>Dedicated support</li></ul>
+        <button class="btn-plan btn-plan-outline" data-track="Pricing Agency CTA">Go Agency</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip" data-section="cta">
+  <h2>Ready to build smarter?</h2>
+  <p>Join thousands of builders already automating their growth with PayMeGPT.</p>
+  <button class="btn-primary" data-track="CTA Bottom Start Free">Start for Free Today</button>
+</section>
+
+<footer data-section="footer">
+  <div class="footer-logo" data-track="Footer Logo">PayMeGPT</div>
+  <div class="footer-links">
+    <a data-track="Footer Privacy">Privacy</a>
+    <a data-track="Footer Terms">Terms</a>
+    <a data-track="Footer Contact">Contact</a>
+  </div>
+</footer>
+
+<div id="heatmapLayer"><canvas id="heatmapCanvas"></canvas></div>
+
+<div id="hmControls">
+  <div id="hmInfo"></div>
+  <button id="hmToggle" onclick="toggleHeatmap()">
+    <div class="dot"></div>
+    <span id="hmLabel">Show Heatmap</span>
+  </button>
+</div>
+
+<div id="statusBar">
+  <div class="sdot"></div>
+  <span id="statusMsg">Tracking active &mdash; Session <span id="sidDisplay"></span></span>
+</div>
+
+<script>
+// ============================================================
+//  CONFIG — webhook bypasses the gated sheet-rows API entirely
+// ============================================================
+const WEBHOOK_URL = 'https://paymegpt.com/api/webhooks/flow/3024/3b52074d60c0b525055407c8e6a083622602942e72dab40a7e1f9965072225bc';
+const READ_API    = 'https://paymegpt.com/api/public/landing-pages/3974/sheet-data';
+
+const SESSION_ID  = Math.random().toString(36).slice(2,10).toUpperCase();
+const DEVICE      = /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
+
+document.getElementById('sidDisplay').textContent = SESSION_ID;
+
+// ============================================================
+//  STATUS BAR
+// ============================================================
+function setStatus(msg, state) {
+  const bar = document.getElementById('statusBar');
+  document.getElementById('statusMsg').innerHTML = msg;
+  bar.className = state || '';
+}
+
+// ============================================================
+//  HELPERS
+// ============================================================
+function getSection(el) {
+  let node = el;
+  while (node && node !== document.body) {
+    const s = node.getAttribute('data-section');
+    if (s) return s;
+    node = node.parentElement;
+  }
+  return 'unknown';
+}
+function getTrackLabel(el) {
+  let node = el;
+  while (node && node !== document.body) {
+    const l = node.getAttribute('data-track');
+    if (l) return l;
+    node = node.parentElement;
+  }
+  return el.tagName.toLowerCase() + (el.className ? '.' + el.className.split(' ')[0] : '');
+}
+function spawnRipple(x, y) {
+  const r = document.createElement('div');
+  r.className = 'click-ripple';
+  r.style.left = x + 'px'; r.style.top = y + 'px';
+  document.body.appendChild(r);
+  setTimeout(() => r.remove(), 700);
+}
+
+// ============================================================
+//  CLICK TRACKING — queue + debounced batch flush
+// ============================================================
+let queue = [];
+let flushTimer = null;
+let totalSent = 0;
+
+document.addEventListener('click', (e) => {
+  const xPct = ((e.clientX / window.innerWidth)  * 100).toFixed(1);
+  const yPct = ((e.clientY / window.innerHeight) * 100).toFixed(1);
+
+  spawnRipple(e.clientX, e.clientY);
+
+  queue.push({
+    session_id:   SESSION_ID,
+    element:      e.target.tagName.toLowerCase(),
+    element_text: getTrackLabel(e.target),
+    section:      getSection(e.target),
+    x_percent:    xPct,
+    y_percent:    yPct,
+    page_x:       String(e.pageX),
+    page_y:       String(e.pageY),
+    timestamp:    new Date().toISOString(),
+    device:       DEVICE,
+    screen_w:     String(window.innerWidth),
+    screen_h:     String(window.innerHeight)
+  });
+
+  setStatus('Sending click&hellip;', 'sending');
+  clearTimeout(flushTimer);
+  flushTimer = setTimeout(flushQueue, 800);
+});
+
+async function flushQueue() {
+  if (!queue.length) return;
+  const batch = queue.splice(0);
+
+  for (const click of batch) {
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contactEmail: 'heatmap@tracker.pmg',
+          contactName:  click.session_id,
+          data: {
+            'Session ID':   click.session_id,
+            'Element':      click.element,
+            'Element Text': click.element_text,
+            'Section':      click.section,
+            'X Percent':    click.x_percent,
+            'Y Percent':    click.y_percent,
+            'Page X':       click.page_x,
+            'Page Y':       click.page_y,
+            'Timestamp':    click.timestamp,
+            'Device':       click.device,
+            'Screen W':     click.screen_w,
+            'Screen H':     click.screen_h
+          }
+        })
+      });
+
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      totalSent++;
+      setStatus(`<strong style="color:var(--teal)">${totalSent}</strong> click${totalSent>1?'s':''} tracked &mdash; Session ${SESSION_ID}`, '');
+    } catch(err) {
+      setStatus('Write failed: ' + err.message, 'error');
+    }
+  }
+}
+
+window.addEventListener('beforeunload', () => { clearTimeout(flushTimer); flushQueue(); });
+
+// ============================================================
+//  HEATMAP ENGINE
+// ============================================================
+let heatmapVisible = false;
+let heatPoints = [];
+
+function toggleHeatmap() {
+  heatmapVisible = !heatmapVisible;
+  const btn   = document.getElementById('hmToggle');
+  const label = document.getElementById('hmLabel');
+  const layer = document.getElementById('heatmapLayer');
+  const info  = document.getElementById('hmInfo');
+
+  if (heatmapVisible) {
+    btn.classList.add('active');
+    label.textContent = 'Hide Heatmap';
+    layer.style.display = 'block';
+    info.classList.add('show');
+    document.body.style.cursor = 'default';
+    loadHeatmap();
+  } else {
+    btn.classList.remove('active');
+    label.textContent = 'Show Heatmap';
+    layer.style.display = 'none';
+    info.classList.remove('show');
+    document.body.style.cursor = 'crosshair';
+  }
+}
+
+async function loadHeatmap() {
+  const info = document.getElementById('hmInfo');
+  info.innerHTML = '<strong>Loading&hellip;</strong>';
+  try {
+    const res = await fetch(READ_API, { cache: 'no-cache' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    const rows = Array.isArray(data) ? data : (data.rows || data.data || []);
+
+    heatPoints = rows.map(r => ({
+      xPct: parseFloat(r['X Percent']) || 0,
+      yPct: parseFloat(r['Y Percent']) || 0,
+      section: r['Section'] || '',
+      label:   r['Element Text'] || '',
+      device:  r['Device'] || ''
+    })).filter(p => p.xPct > 0 && p.yPct > 0);
+
+    drawHeatmap();
+
+    const counts = {};
+    heatPoints.forEach(p => { counts[p.section] = (counts[p.section]||0)+1; });
+    const top = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,4);
+    const lines = top.map(([k,v]) => `<strong>${v}</strong> ${k}`).join(' &nbsp;|&nbsp; ');
+    info.innerHTML = `<strong>${heatPoints.length}</strong> total clicks<br>${lines || '(no data yet — click around first!)'}`;
+
+  } catch(e) {
+    info.innerHTML = `<strong style="color:#f87171">Error: ${e.message}</strong>`;
+  }
+}
+
+function drawHeatmap() {
+  const canvas = document.getElementById('heatmapCanvas');
+  const W = window.innerWidth, H = window.innerHeight;
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, W, H);
+  if (!heatPoints.length) return;
+
+  const radius = Math.max(W, H) * 0.07;
+  heatPoints.forEach(p => {
+    const px = (p.xPct / 100) * W;
+    const py = (p.yPct / 100) * H;
+    const g = ctx.createRadialGradient(px, py, 0, px, py, radius);
+    g.addColorStop(0,   'rgba(54,214,181,0.35)');
+    g.addColorStop(0.4, 'rgba(54,214,181,0.15)');
+    g.addColorStop(1,   'rgba(54,214,181,0)');
+    ctx.beginPath(); ctx.fillStyle = g;
+    ctx.arc(px, py, radius, 0, Math.PI*2); ctx.fill();
+  });
+
+  // recolor by intensity
+  const imgData = ctx.getImageData(0, 0, W, H);
+  const d = imgData.data;
+  for (let i = 0; i < d.length; i += 4) {
+    const a = d[i+3] / 255;
+    if (a < 0.01) continue;
+    if (a > 0.55) {
+      d[i]=255; d[i+1]=Math.round(50+(1-a)*80); d[i+2]=30; d[i+3]=Math.round(a*210);
+    } else if (a > 0.25) {
+      d[i]=255; d[i+1]=Math.round(180+(1-a)*60); d[i+2]=30; d[i+3]=Math.round(a*210);
+    } else {
+      d[i]=54; d[i+1]=214; d[i+2]=181; d[i+3]=Math.round(a*210);
+    }
+  }
+  ctx.putImageData(imgData, 0, 0);
+}
+
+window.addEventListener('resize', () => { if (heatmapVisible) drawHeatmap(); });
+</script>
+  <script src="script.js"></script>
+</body>
+</html>
